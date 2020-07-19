@@ -22,7 +22,7 @@ public class TestDbServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// setup connection variables
+		// setup connecti	on variables
 		String user = "hbstudent";
 		String pass = "hbstudent";
 		

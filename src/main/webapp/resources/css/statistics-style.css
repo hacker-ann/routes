@@ -1,0 +1,19 @@
+
+form {
+	margin-top: 10px;
+	}
+
+input {
+	background:#EEEEEE;
+	width: 300px;
+	border: none; 
+	padding: 4px; 
+	font-size: 16px;
+}
+#image {
+	 float:right;
+	}
+
+#footer {
+  clear: both;			
+}
