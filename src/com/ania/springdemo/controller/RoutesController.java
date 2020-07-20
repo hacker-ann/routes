@@ -27,12 +27,12 @@ import com.ania.springdemo.service.RoutesService;
 @RequestMapping("/routes")
 public class RoutesController {
 	
-//	@InitBinder
-//	public void initBinder(WebDataBinder binder) {
-//		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-//		dateFormat.setLenient(false);
-//		binder.registerCustomEditor(java.sql.Date.class, new CustomDateEditor(dateFormat, false));
-//	}
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		dateFormat.setLenient(false);
+		binder.registerCustomEditor(java.sql.Date.class, new CustomDateEditor(dateFormat, false));
+	}
 	
 
 	// need to inject our routes service
