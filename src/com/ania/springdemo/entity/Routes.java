@@ -1,8 +1,7 @@
 package com.ania.springdemo.entity;
 
 
-import java.sql.Date;
-
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -41,10 +40,10 @@ public class Routes {
 	private String style;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@Column(name="date")
+	@Column(name="`date`")
 	private Date date;
 	
-	@Column(name="comment")
+	@Column(name="`comment`")
 	private String comment;
 
 	public Routes() {
