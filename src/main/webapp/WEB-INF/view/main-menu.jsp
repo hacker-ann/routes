@@ -19,7 +19,7 @@
 	</div>
 	<div>
 					<input type="button" value="My Routes"
-				   onclick="window.location.href='/hb-routes-tracker/routes/list'; return false;"
+				   onclick="window.location.href='${pageContext.request.contextPath}/routes/list'; return false;"
 				   class="button"
 			/>
 
@@ -27,7 +27,7 @@
 <div>
 	
 				<input type="button" value="My statistics"
-				   onclick="window.location.href='/hb-routes-tracker/routes/statistics'; return false;"
+				   onclick="window.location.href='${pageContext.request.contextPath}/routes/statistics'; return false;"
 				   class="button"
 			/>
 

@@ -1,0 +1,16 @@
+version: '2.0'
+services:
+  routes:
+    build: .
+    ports:
+    - "5000:5000"
+    links:
+    - mysql
+  mysql:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: powpowpow
+      MYSQL_USER: hbstudent
+      MYSQL_PASSWORD: hbstudent
+    volumes:
+      mysql-data:/var/lib/mysql

@@ -1,0 +1,79 @@
+apply plugin: 'java'
+version = '1.0'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+// In this section you declare where to find the dependencies of your project
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+apply plugin: 'eclipse'
+apply plugin: 'com.bmuschko.tomcat'
+apply plugin: 'embedded-mysql'
+
+eclipse {
+    project {
+        name = 'routes'
+
+        natures 'org.springframework.ide.eclipse.core.springnature'
+        buildCommand 'org.springframework.ide.eclipse.core.springbuilder'
+        //downloadSources = true
+        //downloadJavadocs = true
+    }
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.bmuschko:gradle-tomcat-plugin:2.5'
+        classpath 'com.github.michaelruocco:embedded-mysql-plugin:2.1.11'
+    }
+}
+
+// In this section you declare the dependencies for your production and test code
+dependencies {
+    def springVersion = "4.3.27.RELEASE"
+    compile "javax.servlet.jsp:javax.servlet.jsp-api:2.3.3"
+    compile "javax.servlet:javax.servlet-api:3.1.0"
+    compile "taglibs:standard:1.1.2"
+    compile "javax.servlet:jstl:1.0"
+
+    compile "javax.validation:validation-api:2.0.1.Final"
+    compile "org.hibernate:hibernate-core:5.3.17.Final"
+    compile "org.aspectj:aspectjrt:1.6.9"
+    compile "org.springframework:spring-aop:${springVersion}"
+    compile "org.springframework:spring-aspects:${springVersion}"
+    compile "org.springframework:spring-context:${springVersion}"
+    compile "org.springframework:spring-core:${springVersion}"
+    compile "org.springframework:spring-jdbc:${springVersion}"
+    compile "org.springframework:spring-orm:${springVersion}"
+    compile "org.springframework:spring-webmvc:${springVersion}"
+
+    runtime "com.mchange:c3p0:0.9.5"
+    runtime "mysql:mysql-connector-java:8.0.20"
+
+    def tomcatVersion = '9.0.1'
+    tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
+            "org.apache.tomcat.embed:tomcat-embed-logging-juli:9.0.0.M6",
+            "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
+}
+
+embeddedMysql {
+    url = 'jdbc:mysql://localhost:3306/hb_routes_tracker'
+    username = 'hbstudent'
+    password = 'hbstudent'
+    version = 'v5_7_latest'
+}
+
+tomcat {
+    httpProtocol = 'org.apache.coyote.http11.Http11Nio2Protocol'
+    ajpProtocol  = 'org.apache.coyote.ajp.AjpNio2Protocol'
+}
+
+tomcatRun.dependsOn([startEmbeddedMysql])
+tomcatStop.dependsOn([stopEmbeddedMysql])
