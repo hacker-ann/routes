@@ -40,10 +40,10 @@ public class Routes {
 	private String style;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@Column(name="`date`")
+	@Column(name="date_of_ascent")
 	private Date date;
 	
-	@Column(name="`comment`")
+	@Column(name="note")
 	private String comment;
 
 	public Routes() {

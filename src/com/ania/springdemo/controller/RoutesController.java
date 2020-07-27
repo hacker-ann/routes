@@ -3,6 +3,7 @@ package com.ania.springdemo.controller;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import javax.validation.Valid;
 
@@ -30,8 +31,9 @@ public class RoutesController {
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
 		dateFormat.setLenient(false);
-		binder.registerCustomEditor(java.sql.Date.class, new CustomDateEditor(dateFormat, false));
+		binder.registerCustomEditor(java.util.Date.class, new CustomDateEditor(dateFormat, false));
 	}
 	
 
@@ -71,6 +73,7 @@ public class RoutesController {
 			else {
 				// save route using  service
 				System.out.println("Received update for Routes wiht date: " + theRoutes.getDate().toGMTString());
+				System.out.println("Route: " + theRoutes.getRouteName());
 				routesService.saveRoutes(theRoutes);	
 				return "redirect:/routes/list";
 			}
