@@ -2,7 +2,7 @@
 ***
 This is a database web application using Spring MVC and Hibernate.
 
-![main page](./img/main page.png)
+![main page](./img/main.png)
 
 ## Table of Contents
 * [General Info](#general-information)
